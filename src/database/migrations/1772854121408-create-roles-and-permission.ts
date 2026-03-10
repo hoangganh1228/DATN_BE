@@ -62,13 +62,13 @@ export class CreateRolesAndPermission1772854121408 implements MigrationInterface
               ON UPDATE CASCADE
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         `);
-      }
+    }
     
-      public async down(queryRunner: QueryRunner): Promise<void> {
+    public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`DROP TABLE IF EXISTS \`user_roles\``);
         await queryRunner.query(`DROP TABLE IF EXISTS \`role_permissions\``);
         await queryRunner.query(`DROP TABLE IF EXISTS \`permissions\``);
         await queryRunner.query(`DROP TABLE IF EXISTS \`roles\``);
-      }
+    }
 
 }

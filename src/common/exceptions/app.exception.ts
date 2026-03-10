@@ -8,7 +8,7 @@ export class AppException extends HttpException {
   constructor(
     key: ErrorCodeKey,
     httpStatus: HttpStatus = HttpStatus.BAD_REQUEST,
-    detail?: string,                  // thông tin thêm nếu cần
+    detail?: string,                  
   ) {
     const { code, message } = ErrorCode[key];
 
