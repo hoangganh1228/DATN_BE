@@ -12,6 +12,7 @@ import jwtConfig from './config/jwt.config';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { ProductsModule } from './modules/products/products.module';
 import awsConfig from './config/aws.config';
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import awsConfig from './config/aws.config';
     // RedisModule, 
     UsersModule, 
     AuthModule, 
-    CategoriesModule
+    CategoriesModule, ProductsModule
   ],
   controllers: [AppController],
   providers: [
