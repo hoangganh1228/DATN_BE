@@ -39,6 +39,15 @@ export const ErrorCode = {
   OTP_INVALID:               { code: 'PWD_001', message: 'OTP is invalid' },
   OTP_EXPIRED:               { code: 'PWD_002', message: 'OTP has expired' },
 
+  // RBAC (Roles / Permissions)
+  ROLE_NOT_FOUND:            { code: 'RBAC_001', message: 'Role not found' },
+  ROLE_ALREADY_EXISTS:       { code: 'RBAC_002', message: 'Role already exists' },
+  ROLE_ALREADY_ASSIGNED:     { code: 'RBAC_003', message: 'Role already assigned to user' },
+  ROLE_NOT_ASSIGNED:         { code: 'RBAC_004', message: 'Role is not assigned to user' },
+
+  PERMISSION_NOT_FOUND:      { code: 'RBAC_101', message: 'Permission not found' },
+  PERMISSION_ALREADY_EXISTS: { code: 'RBAC_102', message: 'Permission already exists' },
+
   // Validation
   VALIDATION_ERROR:          { code: 'VAL_001', message: 'Invalid input data' },
 
