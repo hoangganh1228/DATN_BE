@@ -49,7 +49,7 @@ export class RbacService {
 
     const role = this.roleRepo.create({
       name:        dto.name,
-      description: dto.description ?? null,
+      description: dto.description,
       permissions,
     });
 
@@ -78,7 +78,7 @@ export class RbacService {
     }
 
     if (dto.name)        role.name        = dto.name;
-    if (dto.description) role.description = dto.description;
+    role.description = dto.description;
 
     return this.roleRepo.save(role);
   }
@@ -109,7 +109,7 @@ export class RbacService {
     const permission = this.permissionRepo.create({
       name:        dto.name,
       action:      dto.action,
-      description: dto.description ?? null,
+      description: dto.description,
     });
 
     return this.permissionRepo.save(permission);

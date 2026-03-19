@@ -8,7 +8,9 @@ export class Role extends BaseEntity {
   name: string;
 
   @Column({ length: 200, nullable: true })
-  description: string | null;
+  // Use `string` (nullable in DB) to avoid TypeORM inferring `Object`
+  // when `strictNullChecks` is enabled.
+  description?: string;
 
   @ManyToMany(() => Permission, (permission) => permission.roles, { eager: true })
   @JoinTable({

@@ -13,8 +13,6 @@ import { ResponseInterceptor } from './common/interceptors/response.interceptor'
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ProductsModule } from './modules/products/products.module';
-import { RbacModule } from './nodules/rbac/rbac.module';
-import { RbacController } from './modules/rbac/rbac.controller';
 import { RbacModule } from './modules/rbac/rbac.module';
 import awsConfig from './config/aws.config';
 @Module({
@@ -35,7 +33,7 @@ import awsConfig from './config/aws.config';
     AuthModule, 
     CategoriesModule, ProductsModule, RbacModule
   ],
-  controllers: [AppController, RbacController],
+  controllers: [AppController],
   providers: [
     AppService,
     {
