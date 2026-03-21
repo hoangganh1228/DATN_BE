@@ -14,6 +14,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ProductsModule } from './modules/products/products.module';
 import { RbacModule } from './modules/rbac/rbac.module';
+import { CartsModule } from './modules/carts/carts.module';
 import awsConfig from './config/aws.config';
 @Module({
   imports: [
@@ -31,7 +32,7 @@ import awsConfig from './config/aws.config';
     // RedisModule, 
     UsersModule, 
     AuthModule, 
-    CategoriesModule, ProductsModule, RbacModule
+    CategoriesModule, ProductsModule, RbacModule, CartsModule
   ],
   controllers: [AppController],
   providers: [
