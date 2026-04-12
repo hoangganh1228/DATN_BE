@@ -17,6 +17,7 @@ import { RbacModule } from './modules/rbac/rbac.module';
 import { CartsModule } from './modules/carts/carts.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
+import { ForgotPasswordModule } from './modules/forgot-password/forgot-password.module';
 import awsConfig from './config/aws.config';
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import awsConfig from './config/aws.config';
     // RedisModule, 
     UsersModule, 
     AuthModule, 
-    CategoriesModule, ProductsModule, RbacModule, CartsModule, OrdersModule, ReviewsModule
+    CategoriesModule, ProductsModule, RbacModule, CartsModule, OrdersModule, ReviewsModule, ForgotPasswordModule
   ],
   controllers: [AppController],
   providers: [
