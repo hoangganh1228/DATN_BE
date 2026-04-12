@@ -44,6 +44,14 @@ export const ErrorCode = {
   ROLE_ALREADY_EXISTS:       { code: 'RBAC_002', message: 'Role already exists' },
   ROLE_ALREADY_ASSIGNED:     { code: 'RBAC_003', message: 'Role already assigned to user' },
   ROLE_NOT_ASSIGNED:         { code: 'RBAC_004', message: 'Role is not assigned to user' },
+  PERMISSION_ALREADY_ASSIGNED_TO_ROLE: {
+    code: 'RBAC_005',
+    message: 'Permission already assigned to role',
+  },
+  PERMISSION_NOT_ASSIGNED_TO_ROLE: {
+    code: 'RBAC_006',
+    message: 'Permission is not assigned to role',
+  },
 
   PERMISSION_NOT_FOUND:      { code: 'RBAC_101', message: 'Permission not found' },
   PERMISSION_ALREADY_EXISTS: { code: 'RBAC_102', message: 'Permission already exists' },

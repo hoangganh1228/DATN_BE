@@ -17,6 +17,7 @@ import {
   UpdatePermissionDto,
 } from './dtos/rbac.dto';
 import {
+  ApiAssignPermissionToRole,
   ApiAssignRoleToUser,
   ApiCreatePermission,
   ApiCreateRole,
@@ -29,6 +30,7 @@ import {
   ApiRevokeRoleFromUser,
   ApiRemovePermission,
   ApiRemoveRole,
+  ApiRevokePermissionFromRole,
   ApiUpdatePermission,
   ApiUpdateRole,
 } from './swagger/rbac.swagger';
@@ -66,6 +68,24 @@ export class RolesController {
   @ApiRemoveRole()
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.rbacService.removeRole(id);
+  }
+
+  @Post(':roleId/permissions/:permissionId')
+  @ApiAssignPermissionToRole()
+  assignPermissionToRole(
+    @Param('roleId', ParseIntPipe) roleId: number,
+    @Param('permissionId', ParseIntPipe) permissionId: number,
+  ) {
+    return this.rbacService.assignPermissionToRole(roleId, permissionId);
+  }
+
+  @Delete(':roleId/permissions/:permissionId')
+  @ApiRevokePermissionFromRole()
+  revokePermissionFromRole(
+    @Param('roleId', ParseIntPipe) roleId: number,
+    @Param('permissionId', ParseIntPipe) permissionId: number,
+  ) {
+    return this.rbacService.revokePermissionFromRole(roleId, permissionId);
   }
 }
 

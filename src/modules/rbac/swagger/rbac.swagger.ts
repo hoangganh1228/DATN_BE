@@ -67,6 +67,44 @@ export function ApiRemoveRole() {
   );
 }
 
+export function ApiAssignPermissionToRole() {
+  return applyDecorators(
+    ApiOperation({ summary: 'Assign permission to role' }),
+    ApiParam({ name: 'roleId', type: 'number' }),
+    ApiParam({ name: 'permissionId', type: 'number' }),
+    ApiResponse({
+      status: HttpStatus.CREATED,
+      description: 'Permission assigned to role successfully',
+      type: RoleResponseDto,
+    }),
+    ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Role or permission not found' }),
+    ApiResponse({
+      status: HttpStatus.CONFLICT,
+      description: 'Permission already assigned to role',
+      schema: {
+        example: {
+          errorCode: 'RBAC_PERMISSION_ALREADY_ASSIGNED_TO_ROLE',
+          message: 'Permission already assigned to role',
+        },
+      },
+    }),
+  );
+}
+
+export function ApiRevokePermissionFromRole() {
+  return applyDecorators(
+    ApiOperation({ summary: 'Revoke permission from role' }),
+    ApiParam({ name: 'roleId', type: 'number' }),
+    ApiParam({ name: 'permissionId', type: 'number' }),
+    ApiResponse({
+      status: HttpStatus.OK,
+      description: 'Permission revoked from role successfully',
+      type: RoleResponseDto,
+    }),
+    ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Permission not assigned to role' }),
+  );
+}
+
 export function ApiFindAllPermissions() {
   return applyDecorators(
     ApiOperation({ summary: 'Get all permissions' }),

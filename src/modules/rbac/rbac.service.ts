@@ -88,6 +88,31 @@ export class RbacService {
     await this.roleRepo.remove(role);
   }
 
+  async assignPermissionToRole(roleId: number, permissionId: number) {
+    const role = await this.findRoleById(roleId);
+    const permission = await this.findPermissionById(permissionId);
+
+    const alreadyAssigned = role.permissions.some((item) => item.id === permission.id);
+    if (alreadyAssigned) {
+      throw new AppException('PERMISSION_ALREADY_ASSIGNED_TO_ROLE', HttpStatus.CONFLICT);
+    }
+
+    role.permissions = [...role.permissions, permission];
+    return this.roleRepo.save(role);
+  }
+
+  async revokePermissionFromRole(roleId: number, permissionId: number) {
+    const role = await this.findRoleById(roleId);
+
+    const wasAssigned = role.permissions.some((item) => item.id === permissionId);
+    if (!wasAssigned) {
+      throw new AppException('PERMISSION_NOT_ASSIGNED_TO_ROLE', HttpStatus.NOT_FOUND);
+    }
+
+    role.permissions = role.permissions.filter((item) => item.id !== permissionId);
+    return this.roleRepo.save(role);
+  }
+
   // ════════════════════════════════════════════════
   //  PERMISSIONS
   // ════════════════════════════════════════════════
