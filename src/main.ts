@@ -25,7 +25,9 @@ async function bootstrap() {
 
   app.useGlobalFilters(new HttpExceptionFilter());
   
-  app.enableCors();
+  app.enableCors({
+    origin: "*",
+  });
 
   app.use(helmet());
 
