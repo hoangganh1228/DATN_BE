@@ -18,6 +18,8 @@ import { CartsModule } from './modules/carts/carts.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { ForgotPasswordModule } from './modules/forgot-password/forgot-password.module';
+import { HealthController } from './modules/health/health.controller';
+import { HealthService } from './modules/health/health.service';
 import awsConfig from './config/aws.config';
 @Module({
   imports: [
@@ -37,13 +39,14 @@ import awsConfig from './config/aws.config';
     AuthModule, 
     CategoriesModule, ProductsModule, RbacModule, CartsModule, OrdersModule, ReviewsModule, ForgotPasswordModule
   ],
-  controllers: [AppController],
+  controllers: [AppController, HealthController],
   providers: [
     AppService,
     {
       provide: APP_INTERCEPTOR,
       useClass: ResponseInterceptor,
     },
+    HealthService,
   ],
 })
 export class AppModule {}
