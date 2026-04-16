@@ -61,7 +61,7 @@ cp .env.example .env
 Typical variables (see `.env.example` for the full list):
 
 - **App:** `PORT` (default `3000`).
-- **Database:** `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASS`, `DB_NAME`.
+- **Database:** `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_PASSWORD`.
 - **Redis:** `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `REDIS_DB`.
 - **JWT:** `JWT_SECRET`, `JWT_EXPIRES` (optional: `JWT_REFRESH_EXPIRES`).
 - **AWS S3:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`, `AWS_S3_URL`.
