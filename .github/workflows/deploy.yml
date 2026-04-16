@@ -7,6 +7,9 @@ on:
 env:
   AWS_REGION: ap-southeast-1
   ECR_REPOSITORY: ecommerce-app
+  ECS_CLUSTER: ecommerce-cluster
+  ECS_SERVICE: ecommerce-service
+  CONTAINER_NAME: ecommerce-app
 
 jobs:
   deploy:
@@ -57,12 +60,30 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+      
 
-      # ── 8. Deploy to ECS ─────────────────────────────────────────
-      - name: Deploy to ECS
+      # ── 8. Get task definition ─────────────────────────────────────
+      - name: Download current task definition
         run: |
-          aws ecs update-service \
-            --cluster ecommerce-cluster \
-            --service ecommerce-service \
-            --force-new-deployment \
-            --region ${{ env.AWS_REGION }}
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.ECS_SERVICE }} \
+            --query taskDefinition \
+            > task-definition.json
+
+      # ── 9. Update ECS service ─────────────────────────────────────
+      - name: Update image in task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+
+      # ── 10. Deploy to ECS ─────────────────────────────────────────
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
