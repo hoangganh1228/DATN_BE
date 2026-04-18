@@ -7,7 +7,7 @@ on:
 env:
   AWS_REGION: ap-southeast-1
   ECR_REPOSITORY: ecommerce-app
-  ECS_CLUSTER: ecommerce-cluster
+  ECS_CLUSTER: favorable-hamster-yp8axv
   ECS_SERVICE: ecommerce-service
   CONTAINER_NAME: ecommerce-app
 
