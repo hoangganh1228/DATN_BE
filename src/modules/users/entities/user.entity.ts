@@ -20,7 +20,7 @@ export class User extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   address: string | null;
 
-  @Column({ type: 'enum', enum: ['000', '111', '999'], default: '000' })
+  @Column({ type: 'enum', enum: ['000', '111', '999'], default: '999' })
   role: UserRole;
 
   @Column({ type: 'varchar', length: 255, nullable: true })

@@ -11,7 +11,7 @@ export class CreateUsers1772854070972 implements MigrationInterface {
             \`password\` VARCHAR(255)    NULL,
             \`phone\`         VARCHAR(20)     NULL,
             \`address\`       TEXT            NULL,
-            \`role\` ENUM('000', '111', '999') NOT NULL DEFAULT '000',
+            \`role\` ENUM('000', '111', '999') NOT NULL DEFAULT '999',
             \`avatar\`        VARCHAR(255)    NULL,
             \`is_active\`     BOOLEAN         NOT NULL DEFAULT TRUE,
             \`created_at\`    DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
