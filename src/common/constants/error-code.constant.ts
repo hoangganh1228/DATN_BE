@@ -35,6 +35,10 @@ export const ErrorCode = {
   REVIEW_ALREADY_EXISTS:     { code: 'REVIEW_002', message: 'You have already reviewed this product' },
   REVIEW_NOT_PURCHASED:      { code: 'REVIEW_003', message: 'You need to purchase the product before reviewing' },
 
+  // Wishlist
+  WISHLIST_NOT_FOUND:        { code: 'WISHLIST_001', message: 'Product not found in wishlist' },
+  WISHLIST_ALREADY_EXISTS:   { code: 'WISHLIST_002', message: 'Product already in wishlist' },
+
   // Password Reset
   OTP_INVALID:               { code: 'PWD_001', message: 'OTP is invalid' },
   OTP_EXPIRED:               { code: 'PWD_002', message: 'OTP has expired' },
