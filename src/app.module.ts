@@ -20,6 +20,7 @@ import { ReviewsModule } from './modules/reviews/reviews.module';
 import { ForgotPasswordModule } from './modules/forgot-password/forgot-password.module';
 import { HealthController } from './modules/health/health.controller';
 import { HealthService } from './modules/health/health.service';
+import { WishlistsModule } from './modules/wishlists/wishlists.module';
 import awsConfig from './config/aws.config';
 @Module({
   imports: [
@@ -37,7 +38,7 @@ import awsConfig from './config/aws.config';
     // RedisModule, 
     UsersModule, 
     AuthModule, 
-    CategoriesModule, ProductsModule, RbacModule, CartsModule, OrdersModule, ReviewsModule, ForgotPasswordModule
+    CategoriesModule, ProductsModule, RbacModule, CartsModule, OrdersModule, ReviewsModule, ForgotPasswordModule, WishlistsModule
   ],
   controllers: [AppController, HealthController],
   providers: [
